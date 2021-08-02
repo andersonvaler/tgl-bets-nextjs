@@ -5,6 +5,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import Router from "next/router";
+import { ReactNode } from "react";
 library.add(fas);
 
 interface Props {
@@ -12,11 +13,11 @@ interface Props {
   green?: boolean;
   gray?: boolean;
   arrowLeft?: boolean;
-  children: string;
+  children?: ReactNode;
   redirectTo?: string;
 }
 
-const ArrowButton = ({ children, ...props }: Props) => {
+const ArrowButton = ({ ...props }: Props) => {
   const redirect = (path: any) => {
     Router.push(path);
   };
@@ -32,7 +33,7 @@ const ArrowButton = ({ children, ...props }: Props) => {
         style={{ color: color }}
         onClick={() => props.redirectTo && redirect(props.redirectTo)}
       >
-        {children}
+        {props.children}
         <FontAwesomeIcon
           icon={props.arrowLeft ? "arrow-left" : "arrow-right"}
         />

@@ -5,6 +5,7 @@ export enum GamesTypes {
 }
 
 export interface Game {
+  _id: string;
   type: string;
   description: string;
   range: number;
@@ -14,8 +15,12 @@ export interface Game {
   "min-cart-value": number;
 }
 
-export interface GamesState {
+export interface Games {
   readonly data: Game[];
   readonly loading: boolean;
   readonly error: boolean;
+}
+
+export interface GamesState {
+  readonly games: Games;
 }
